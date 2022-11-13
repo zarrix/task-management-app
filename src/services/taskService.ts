@@ -1,27 +1,36 @@
 import { ITodo } from "../types";
+import axios from 'axios'
+
+export const apiUrl = 'https://jsonplaceholder.typicode.com';
+
+export async function getTasks(): Promise<ITodo[]> {
 
 
-export function getTasks(): ITodo[] {
-    return [
-        {
-            "id": 1,
-            "title": "delectus aut autem",
-            "completed": false
-        },
-        {
-            "id": 2,
-            "title": "quis ut nam facilis et officia qui",
-            "completed": false
-        },
-        {
-            "id": 3,
-            "title": "fugiat veniam minus",
-            "completed": false
-        },
-        {
-            "id": 4,
-            "title": "et porro tempora",
-            "completed": true
-        }
-    ]
+    // const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+    //     method: "GET"
+    // })
+
+    // const tasks = await response.json()
+
+    const response = await axios.get(`${apiUrl}/todos`)
+
+    const tasks = response.data
+
+    return tasks;
+}
+
+export async function addTask(todo: ITodo) : Promise<ITodo> {
+    // const response = await fetch('https://jsonplaceholder.typicode.com/todos', {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify(todo)
+    // })
+
+    // const createdTodo = await response.json()
+
+    const createdTodo = (await axios.post(`${apiUrl}/todos`, todo)).data
+
+    return createdTodo;
 }
