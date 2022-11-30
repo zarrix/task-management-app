@@ -1,6 +1,6 @@
-import './App.css';
-import Header from './components/Header';
-import Todos from './components/Todos';
+import Component from '../components/Component';
+import Header from '../components/Header';
+import Todos from '../components/Todos';
 
 function App() {
   const t = 5;
@@ -11,6 +11,7 @@ function App() {
 
       {/* Todos */}
       <Todos />
+      {/* <Component /> */}
       
     </div>
   );

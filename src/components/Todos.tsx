@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import { addTask, getTasks } from '../services/taskService';
 import { ITodo } from '../types';
 import TodoCard from './TodoCard'
@@ -29,8 +30,6 @@ const Todos = () => {
                 alert("task was created succefully")
                 setNewTitle('')
             })
-
-            
         }
     }
 
@@ -60,7 +59,7 @@ const Todos = () => {
                     Add
                 </button>
             </div>
-        </div>
+        </div >
     )
 }
 

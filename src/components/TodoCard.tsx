@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { ITodo } from '../types'
 
 type Props = {
@@ -15,10 +16,13 @@ const TodoCard = ({ todo, deleteTodo, completeTodo }: Props) => {
                 <input
                     type="checkbox"
                     checked={todo.completed}
-                    onChange={() =>  completeTodo(todo.id)}
+                    onChange={() => completeTodo(todo.id)}
                     className="w-6 h-6 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 focus:ring-2"
                 />
-                <label htmlFor="default-checkbox" className="ml-2 text-lg font-medium text-gray-900 ">{todo.title}</label>
+
+                <Link to={`/tasks/${todo.id}`}>
+                    <label htmlFor="default-checkbox" className="ml-2 text-lg font-medium text-gray-900 hover:text-red-500 hover:cursor-pointer ">{todo.title}</label>
+                </Link>
             </div>
             <div>
                 <button className='w-10'><img src="https://img.icons8.com/color/48/null/add--v1.png" /></button>
